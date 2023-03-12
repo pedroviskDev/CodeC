@@ -1,2 +1,2 @@
-# codeMath
-códigos de natureza matemática
+# CodeC
+códigos diversos em C
