@@ -1,54 +1,96 @@
+//calculadora de sistemas de equações lineares -> Linearsys
+
 #include<stdio.h>
-#include<math.h>
 #include<stdlib.h>
-#include<conio.h>
-#include<locale.h>
-
-int op, m, n, num;
-
-
-int menu(){
-    int op;
-    printf("LINEARSYS - Calculadora de sistemas lineares\n");
-    printf("1 - ENTRADA DE DADOS\n2 - SAIR\n> ");
-    scanf("%d",&op);
-    return op;
-}
-
-
-
 
 int main(void){
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    int L = 3, C = 4;
+    float matriz[L][C];
 
-    setlocale(LC_ALL,"Portuguese");
-    
-    op = menu();
-    while(op!=2){
-        switch(op){
-        case 1:{
-            printf("Quantas equações compõem o sistema?\n> ");
-            scanf("%d",&n);
-            printf("Quantas incógnitas as equações possuem?\n> ");
-            scanf("%d",&m);
-            int matriz[n][m];
-            for (int i=0;i<n;i++){
-                for (int j=0;j<m;j++){
-                    printf("Informe o elemento da posição a%d%d\n> ",i+1,j+1);
-                    scanf("%d",&matriz[i][j]);
-                    system("cls");
-                }
-            }
-            break;
-        }
-            
-        case 2:
-            printf("SAINDO!\n");
-        
-        default:
-            printf("OPÇÃO INVÁLIDA!\n");
-            break;
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("LINEARSYS - Linear Systems Calculator\n");
+            printf("Insira o %do coeficiente (ax+by+cz = d) da %da equacao\n>>> ", j+1, i+1);
+            scanf("%f", &matriz[i][j]);
+            getchar();
+            system("clear");
         }
     }
+
+    printf("Matriz expandida inserida com sucesso!\n");
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("%02.1f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Pressione qualquer tecla para continuar\n");
+    getchar();
+
+    if(matriz[0][0] != 1){
+        int aux = matriz[0][0];
+        for(int i = 0 ; i < C ; i++){
+            matriz[0][i] = matriz[0][i] / aux; 
+        }
+    }
+    printf("Matriz expandida inserida com sucesso!\n");
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("%02.1f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Pressione qualquer tecla para continuar\n");
+    getchar();
+
+    if(matriz[1][0] != 0){
+        for(int i = 0 ; i < C ; i++){
+            matriz[1][i] = matriz[1][i] * matriz[0][i] - matriz[1][i];
+        }
+    }
+    printf("Matriz expandida inserida com sucesso!\n");
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("%02.1f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+     printf("Pressione qualquer tecla para continuar\n");
+    getchar();
+
+    if(matriz[2][0] != 0){
+        for(int i = 0 ; i < C ; i++){
+            matriz[2][i] = matriz[2][i] * matriz[0][i] - matriz[2][i];
+        }
+    }
+    printf("Matriz expandida inserida com sucesso!\n");
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("%02.1f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+     printf("Pressione qualquer tecla para continuar\n");
+    getchar();
+
+    if(matriz[1][1] != 1){
+        int aux = matriz[1][1];
+        for(int i = 1 ; i < C ; i++){
+            matriz[1][i] = matriz[1][i] / aux; 
+        }
+    }
+    printf("Matriz expandida inserida com sucesso!\n");
+    for(int i = 0 ; i < L ; i++){
+        for(int j = 0 ; j < C ; j++){
+            printf("%02.1f ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Pressione qualquer tecla para continuar\n");
+    getchar();
+
     return 0;
-    system("pause");
 }
