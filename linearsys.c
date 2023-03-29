@@ -45,7 +45,7 @@ int main(void){
 
     //zerando os elementos abaixo do elemento a11
     //elemento a21
-    if(matriz[0][1] =! 0){
+    if(matriz[0][1] != 0){
         float a = matriz[0][0];
         float b = matriz[1][0];
         for(int i = 0 ; i < C ; i++){
@@ -56,7 +56,7 @@ int main(void){
     imprimeMatriz();
 
     //elemento a31
-    if(matriz[0][1] =! 0){
+    if(matriz[0][1] != 0){
         float a = matriz[0][0];
         float b = matriz[2][0];
         for(int i = 0 ; i < C ; i++){
